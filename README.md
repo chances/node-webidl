@@ -6,6 +6,6 @@ Bindings generator for Node Addons given a WebIDL document.
 
 ## License
 
-[MIT License](http://opensource.org/licenses/MIT)
+[BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
 
 Copyright &copy; 2020 Chance Snow. All rights reserved.
