@@ -1,0 +1,26 @@
+name: Node WebIDL CI
+
+on: push
+#   schedule:
+#   - cron: '0 0 * * SUN'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install Dependencies
+      run: |
+        npm install
+    - name: Test
+      if: success()
+      run: |
+        make test-ci
+      env:
+        CI: true

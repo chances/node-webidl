@@ -1,0 +1,24 @@
+{
+  "name": "node-webidl",
+  "version": "0.1.0",
+  "description": "Bindings generator for Node Addons given a WebIDL document.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chances/node-webidl.git"
+  },
+  "keywords": [
+    "bindings",
+    "webidl",
+    "c"
+  ],
+  "author": "Chance Snow <git@chancesnow.me>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/chances/node-webidl/issues"
+  },
+  "homepage": "https://github.com/chances/node-webidl#readme"
+}
