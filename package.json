@@ -2,9 +2,14 @@
   "name": "node-webidl",
   "version": "0.1.0",
   "description": "Bindings generator for Node Addons given a WebIDL document.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run build"
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "lint": "eslint . --ext .js,.ts",
+    "test": "npm run build",
+    "pack:dry": "npm pack --dry-run"
   },
   "repository": {
     "type": "git",
@@ -20,5 +25,22 @@
   "bugs": {
     "url": "https://github.com/chances/node-webidl/issues"
   },
-  "homepage": "https://github.com/chances/node-webidl#readme"
+  "homepage": "https://github.com/chances/node-webidl#readme",
+  "dependencies": {
+    "webidl2": "^23.10.1",
+    "webidl2js": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.5.0",
+    "@types/webidl2": "^23.8.0",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-with-typescript": "^12.0.1",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "typescript": "^3.7.5"
+  }
 }
