@@ -4,6 +4,51 @@
 
 Bindings generator for Node Addons given a WebIDL document.
 
+## Installation
+
+```sh
+$ npm install --global node-webidl
+```
+
+## Usage
+
+Generate a Node Addon binding given a C header and annotated Web IDL.
+
+```sh
+$ webidl-bind [options] [files]
+```
+
+### Options
+
+| | |
+| -------------------------- | --- |
+| `-V, --version`            | print the version number  |
+| `-o, --out-file <path>`    | redirect generated output to a file |
+| `-h, --help`               | print usage information |
+
+### Binding to C
+
+Given a C source implementation file, e.g. `add.h`:
+
+```c
+float add(float x, float y) {
+  return x + y;
+}
+```
+
+Write a Web IDL interface describing how to interop with Node, e.g. `add.webidl`:
+
+```webidl
+[Bind="add.h"]
+interface Add {
+  float add(float x, float y);
+};
+```
+
+```sh
+$ webidl-bind -o add.c add.webidl
+```
+
 ## License
 
 [BSD-3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
