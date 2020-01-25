@@ -1,6 +1,6 @@
 # Node WebIDL
 
-[![Build Status](https://github.com/chances/node-webidl/workflows/.github/workflows/ci.yml/badge.svg?branch=master)](https://github.com/chances/node-webidl/actions)
+[![Build Status](https://github.com/chances/node-webidl/workflows/Node%20WebIDL%20CI/badge.svg?branch=master)](https://github.com/chances/node-webidl/actions)
 
 Bindings generator for Node Addons given a WebIDL document.
 
