@@ -11,7 +11,7 @@ interface Options {
 
 program.version(packageSpec.version)
   .arguments('[files]')
-  .description('Generate a Node Addon binding to some C impl given annotated Web IDL input')
+  .description('Bindings generator for Node Addons given a WebIDL document')
   .option('-o, --out-file <path>', 'redirect generated output to a file')
 
 program.parse(process.argv)
