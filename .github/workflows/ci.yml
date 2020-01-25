@@ -7,7 +7,11 @@ on: push
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        # node: [6, 8, 10]
 
     steps:
     - uses: actions/checkout@v1
@@ -21,6 +25,4 @@ jobs:
     - name: Test
       if: success()
       run: |
-        make test-ci
-      env:
-        CI: true
+        npm test
