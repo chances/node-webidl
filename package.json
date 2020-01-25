@@ -2,6 +2,9 @@
   "name": "node-webidl",
   "version": "0.1.0",
   "description": "Bindings generator for Node Addons given a WebIDL document.",
+  "bin": {
+    "webidl-bind": "bin/cli.js"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -31,6 +34,9 @@
     "npm": ">=5.0.0"
   },
   "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
+    "get-stdin": "^7.0.0",
     "webidl2": "^23.10.1",
     "webidl2js": "^13.0.0"
   },

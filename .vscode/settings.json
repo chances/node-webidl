@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "webidl"
-    ]
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
