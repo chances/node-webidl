@@ -40,7 +40,7 @@ function failWithHelp(): void {
     process.exit(0)
   }
 
-  await promisify(process.stdout.write)(output)
+  process.stdout.write(output)
 })().catch((err: Error) => {
   const errorMessage = `${err.stack ?? 'Unexpected error'}
 
