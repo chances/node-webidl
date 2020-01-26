@@ -14,7 +14,7 @@ export function namedString(name: string, attributes: ExtendedAttribute[]): stri
   const valueDescriptor = _attribute.rhs as unknown as ValueDescription
   assert(valueDescriptor.type === 'string')
   assert(typeof valueDescriptor.value === 'string')
-  return valueDescriptor.value
+  return stripSurroundingQuotes(valueDescriptor.value)
 }
 
 export function namedStringOptional(name: string, attributes: ExtendedAttribute[]): string | null {
@@ -23,12 +23,23 @@ export function namedStringOptional(name: string, attributes: ExtendedAttribute[
     return null
   }
   const valueDescriptor = _attribute.rhs as unknown as ValueDescription
-  if (valueDescriptor.type === 'string' || typeof valueDescriptor.value === 'string') {
+  if (valueDescriptor.type !== 'string') {
     return null
   }
   assert(typeof valueDescriptor.value === 'string')
-  return valueDescriptor.value
+  return stripSurroundingQuotes(valueDescriptor.value)
 }
 
 export const bind = curry(namedString)('Bind') as (attributes: ExtendedAttribute[]) => string
 export const name = curry(namedStringOptional)('Name') as (attributes: ExtendedAttribute[]) => string | null
+
+function stripSurroundingQuotes(input: string): string {
+  let output = input.split('').join('')
+  if (output.startsWith('"')) {
+    output = output.substring(1)
+  }
+  if (output.endsWith('"')) {
+    output = output.substr(0, output.length - 1)
+  }
+  return output
+}
