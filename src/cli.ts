@@ -41,7 +41,10 @@ function failWithHelp(): void {
   }
 
   await promisify(process.stdout.write)(output)
-})().catch(err => {
-  console.error(`${err as string}`)
+})().catch((err: Error) => {
+  const errorMessage = `${err.stack ?? 'Unexpected error'}
+
+Please report issues at https://github.com/chances/node-webidl/issues/new`
+  console.error(errorMessage)
   process.exit(2)
 })

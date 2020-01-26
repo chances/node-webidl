@@ -12,6 +12,9 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/dist/cli.js",
+      "args": [
+        "${workspaceFolder}/tests/integration/add.webidl"
+      ],
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
