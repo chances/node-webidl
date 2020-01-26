@@ -9,7 +9,7 @@ const packageSpec = require('../package.json')
 
 type OptionalString = string | undefined
 interface Options {
-  'out-file': OptionalString
+  outFile: OptionalString
 }
 
 program.version(packageSpec.version)
@@ -32,9 +32,11 @@ function failWithHelp(): void {
     failWithHelp()
   }
 
-  const output = files.map(transform).join('\n\n')
+  const output = `#include <nan.h>
+${files.map(transform).join('\n\n')}
+`
 
-  const outFile = options['out-file']
+  const outFile = options.outFile
   if (outFile != null) {
     await promisify(writeFile)(outFile, output)
     process.exit(0)
