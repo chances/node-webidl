@@ -2,7 +2,7 @@ import { ExtendedAttribute } from 'webidl2'
 import * as _attributes from './attributes'
 
 export default class Context {
-  readonly implReference: string;
+  readonly implReference: string
 
   constructor(implementationReference: string) {
     this.implReference = implementationReference

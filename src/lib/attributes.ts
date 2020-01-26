@@ -31,6 +31,7 @@ export function namedStringOptional(name: string, attributes: ExtendedAttribute[
 }
 
 export const bind = curry(namedString)('Bind') as (attributes: ExtendedAttribute[]) => string
+export const bindOptional = curry(namedStringOptional)('Bind') as (attributes: ExtendedAttribute[]) => string | null
 export const name = curry(namedStringOptional)('Name') as (attributes: ExtendedAttribute[]) => string | null
 
 function stripSurroundingQuotes(input: string): string {

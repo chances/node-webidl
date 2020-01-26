@@ -2,11 +2,12 @@ import { parse, IDLRootType, InterfaceType, IDLInterfaceMemberType, OperationMem
 import Context from './lib/context'
 import assert from './lib/assert'
 import _function from './lib/types/function'
+import { bindOptional } from './lib/attributes'
 
 export default function (source: string): string {
   return parse(source).filter(isInterface).reduce<string>((output, interfaceDescriptor) => {
     assert(
-      interfaceDescriptor.extAttrs.length > 0,
+      bindOptional(interfaceDescriptor.extAttrs) !== null,
       'Interfaces must be annotated with a Bind extended attribute'
     )
     const context = Context.fromBindAttribute(interfaceDescriptor.extAttrs)
