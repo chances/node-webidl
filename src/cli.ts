@@ -1,5 +1,8 @@
 import * as program from 'commander'
 import * as input from './lib/input'
+import transform from './index'
+import { promisify } from 'util'
+import { writeFile } from 'fs'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const packageSpec = require('../package.json')
@@ -29,12 +32,16 @@ function failWithHelp(): void {
     failWithHelp()
   }
 
+  const output = files.map(transform).join('\n\n')
+
   const outFile = options['out-file']
-  console.log('Bind input Web IDL file to a C binding impl')
   if (outFile != null) {
-    console.log(`Written bindings to ${outFile}`)
+    await promisify(writeFile)(outFile, output)
+    process.exit(0)
   }
+
+  await promisify(process.stdout.write)(output)
 })().catch(err => {
-  console.error(err)
-  failWithHelp()
+  console.error(`${err as string}`)
+  process.exit(2)
 })

@@ -38,6 +38,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var program = require("commander");
 var input = require("./lib/input");
+var index_1 = require("./index");
+var util_1 = require("util");
+var fs_1 = require("fs");
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 var packageSpec = require('../package.json');
 program.version(packageSpec.version)
@@ -50,7 +53,7 @@ function failWithHelp() {
     process.exit(1);
 }
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var files, options, outFile;
+    var files, options, output, outFile;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, input.read(program.args)];
@@ -60,16 +63,22 @@ function failWithHelp() {
                 if (files.length === 0) {
                     failWithHelp();
                 }
+                output = files.map(index_1.default).join('\n\n');
                 outFile = options['out-file'];
-                console.log('Bind input Web IDL file to a C binding impl');
-                if (outFile != null) {
-                    console.log("Written bindings to " + outFile);
-                }
+                if (!(outFile != null)) return [3 /*break*/, 3];
+                return [4 /*yield*/, util_1.promisify(fs_1.writeFile)(outFile, output)];
+            case 2:
+                _a.sent();
+                process.exit(0);
+                _a.label = 3;
+            case 3: return [4 /*yield*/, util_1.promisify(process.stdout.write)(output)];
+            case 4:
+                _a.sent();
                 return [2 /*return*/];
         }
     });
 }); })().catch(function (err) {
-    console.error(err);
-    failWithHelp();
+    console.error("" + err);
+    process.exit(2);
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2xpLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL2NsaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLG1DQUFvQztBQUNwQyxtQ0FBb0M7QUFFcEMsOERBQThEO0FBQzlELElBQU0sV0FBVyxHQUFHLE9BQU8sQ0FBQyxpQkFBaUIsQ0FBQyxDQUFBO0FBTzlDLE9BQU8sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLE9BQU8sQ0FBQztLQUNqQyxTQUFTLENBQUMsU0FBUyxDQUFDO0tBQ3BCLFdBQVcsQ0FBQyw0RUFBNEUsQ0FBQztLQUN6RixNQUFNLENBQUMsdUJBQXVCLEVBQUUscUNBQXFDLENBQUMsQ0FBQTtBQUV6RSxPQUFPLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQTtBQUUzQixTQUFTLFlBQVk7SUFDbkIsT0FBTyxDQUFDLFVBQVUsRUFBRSxDQUFBO0lBQ3BCLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUE7QUFDakIsQ0FBQztBQUVELENBQUM7Ozs7b0JBQ2UscUJBQU0sS0FBSyxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLEVBQUE7O2dCQUF0QyxLQUFLLEdBQUcsU0FBOEI7Z0JBQ3RDLE9BQU8sR0FBRyxPQUFPLENBQUMsSUFBSSxFQUFhLENBQUE7Z0JBRXpDLElBQUksS0FBSyxDQUFDLE1BQU0sS0FBSyxDQUFDLEVBQUU7b0JBQ3RCLFlBQVksRUFBRSxDQUFBO2lCQUNmO2dCQUVLLE9BQU8sR0FBRyxPQUFPLENBQUMsVUFBVSxDQUFDLENBQUE7Z0JBQ25DLE9BQU8sQ0FBQyxHQUFHLENBQUMsNkNBQTZDLENBQUMsQ0FBQTtnQkFDMUQsSUFBSSxPQUFPLElBQUksSUFBSSxFQUFFO29CQUNuQixPQUFPLENBQUMsR0FBRyxDQUFDLHlCQUF1QixPQUFTLENBQUMsQ0FBQTtpQkFDOUM7Ozs7S0FDRixDQUFDLEVBQUUsQ0FBQyxLQUFLLENBQUMsVUFBQSxHQUFHO0lBQ1osT0FBTyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQTtJQUNsQixZQUFZLEVBQUUsQ0FBQTtBQUNoQixDQUFDLENBQUMsQ0FBQSJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2xpLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL2NsaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLG1DQUFvQztBQUNwQyxtQ0FBb0M7QUFDcEMsaUNBQStCO0FBQy9CLDZCQUFnQztBQUNoQyx5QkFBOEI7QUFFOUIsOERBQThEO0FBQzlELElBQU0sV0FBVyxHQUFHLE9BQU8sQ0FBQyxpQkFBaUIsQ0FBQyxDQUFBO0FBTzlDLE9BQU8sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLE9BQU8sQ0FBQztLQUNqQyxTQUFTLENBQUMsU0FBUyxDQUFDO0tBQ3BCLFdBQVcsQ0FBQyw0REFBNEQsQ0FBQztLQUN6RSxNQUFNLENBQUMsdUJBQXVCLEVBQUUscUNBQXFDLENBQUMsQ0FBQTtBQUV6RSxPQUFPLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQTtBQUUzQixTQUFTLFlBQVk7SUFDbkIsT0FBTyxDQUFDLFVBQVUsRUFBRSxDQUFBO0lBQ3BCLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUE7QUFDakIsQ0FBQztBQUVELENBQUM7Ozs7b0JBQ2UscUJBQU0sS0FBSyxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLEVBQUE7O2dCQUF0QyxLQUFLLEdBQUcsU0FBOEI7Z0JBQ3RDLE9BQU8sR0FBRyxPQUFPLENBQUMsSUFBSSxFQUFhLENBQUE7Z0JBRXpDLElBQUksS0FBSyxDQUFDLE1BQU0sS0FBSyxDQUFDLEVBQUU7b0JBQ3RCLFlBQVksRUFBRSxDQUFBO2lCQUNmO2dCQUVLLE1BQU0sR0FBRyxLQUFLLENBQUMsR0FBRyxDQUFDLGVBQVMsQ0FBQyxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsQ0FBQTtnQkFFMUMsT0FBTyxHQUFHLE9BQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQTtxQkFDL0IsQ0FBQSxPQUFPLElBQUksSUFBSSxDQUFBLEVBQWYsd0JBQWU7Z0JBQ2pCLHFCQUFNLGdCQUFTLENBQUMsY0FBUyxDQUFDLENBQUMsT0FBTyxFQUFFLE1BQU0sQ0FBQyxFQUFBOztnQkFBM0MsU0FBMkMsQ0FBQTtnQkFDM0MsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQTs7b0JBR2pCLHFCQUFNLGdCQUFTLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxLQUFLLENBQUMsQ0FBQyxNQUFNLENBQUMsRUFBQTs7Z0JBQTdDLFNBQTZDLENBQUE7Ozs7S0FDOUMsQ0FBQyxFQUFFLENBQUMsS0FBSyxDQUFDLFVBQUEsR0FBRztJQUNaLE9BQU8sQ0FBQyxLQUFLLENBQUMsS0FBRyxHQUFlLENBQUMsQ0FBQTtJQUNqQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFBO0FBQ2pCLENBQUMsQ0FBQyxDQUFBIn0=
