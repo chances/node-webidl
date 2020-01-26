@@ -31,7 +31,7 @@ $ webidl-bind [options] [files]
 Given a C source implementation file, e.g. `add.h`:
 
 ```c
-float add(float x, float y) {
+float addition(float x, float y) {
   return x + y;
 }
 ```
@@ -41,9 +41,12 @@ Write a Web IDL interface describing how to interop with Node, e.g. `add.webidl`
 ```webidl
 [Bind="add.h"]
 interface Add {
+  [Bind="addition"]
   float add(float x, float y);
 };
 ```
+
+Generate bindings:
 
 ```sh
 $ webidl-bind -o add.c add.webidl

@@ -1,5 +1,5 @@
 [Bind="add.h"]
 interface Add {
-  [Name="addition"]
+  [Bind="addition"]
   float add(float x, float y);
 };

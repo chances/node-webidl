@@ -1,3 +1,3 @@
-float add(float x, float y) {
+float addition(float x, float y) {
   return x + y;
 }
