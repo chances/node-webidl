@@ -32,7 +32,10 @@ function failWithHelp(): void {
     failWithHelp()
   }
 
-  const output = `#include <nan.h>
+  const output = `// GENERATED CODE: DO NOT EDIT
+//////////////////////////////
+
+#include <nan.h>
 ${files.map(transform).join('\n\n')}
 `
 
