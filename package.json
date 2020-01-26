@@ -1,6 +1,6 @@
 {
   "name": "node-webidl",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Bindings generator for Node Addons given a WebIDL document",
   "bin": {
     "webidl-bind": "bin/cli.js"
