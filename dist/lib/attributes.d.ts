@@ -3,4 +3,5 @@ export declare function attribute(name: string, attributes: ExtendedAttribute[])
 export declare function namedString(name: string, attributes: ExtendedAttribute[]): string;
 export declare function namedStringOptional(name: string, attributes: ExtendedAttribute[]): string | null;
 export declare const bind: (attributes: ExtendedAttribute[]) => string;
+export declare const bindOptional: (attributes: ExtendedAttribute[]) => string | null;
 export declare const name: (attributes: ExtendedAttribute[]) => string | null;
